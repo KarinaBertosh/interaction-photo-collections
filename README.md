@@ -1,1 +1,0 @@
-# interaction-photo-collections

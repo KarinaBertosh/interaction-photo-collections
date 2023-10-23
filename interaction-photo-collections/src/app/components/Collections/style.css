@@ -1,0 +1,12 @@
+.collections {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.collections__photo {
+    width: 300px;
+    height: 100%;
+}

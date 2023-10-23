@@ -1,0 +1,11 @@
+.search-field {
+  display: flex;
+  justify-content: center;
+}
+
+.search-field__button {
+  height: 37px;
+  width: 40px;
+  background-color: bisque;
+}
+
