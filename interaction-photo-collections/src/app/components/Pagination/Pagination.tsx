@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import { unsplash } from "@/utils/common";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./style.css";
-import { unsplash } from "@/utils/common";
 
 interface IProps {
   updatePhotos: (updatePhotos: any) => void;
