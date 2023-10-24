@@ -5,7 +5,6 @@ import "./style.css";
 export default function MainPage() {
   return (
     <div className="main-page">
-      <Search />
       <Photos />
     </div>
   );

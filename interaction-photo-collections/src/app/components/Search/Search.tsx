@@ -1,17 +1,18 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import "./style.css";
 
-export default function search() {
+interface IProp {
+  request: (request: any) => void;
+}
+
+export default function Search(props: IProp) {
   return (
-    <div className="search-field">
-      <input
-        type="search"
-        id="search"
-        className="search-field__input"
-        placeholder="Search.."
-      />
-      <button type="button" className="search-field__button">
-        <img src="search.svg" alt="search" />
-      </button>
+    <div className="row">
+      <div className="col-md-5 mx-auto">
+        <div className="input-group">
+          <input className="form-control border-end-0 border rounded-pill" type="search" placeholder='search...' id="example-search-input" onChange={(e: any) => props.request(e.target.value)}/>
+        </div>
+      </div>
     </div>
   );
 }
