@@ -11,13 +11,3 @@
     width: 300px;
     height: 100%;
 }
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.active-page {
-    background-color: #f1efef;
-}
