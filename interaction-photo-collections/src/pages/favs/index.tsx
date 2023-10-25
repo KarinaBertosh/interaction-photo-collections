@@ -8,10 +8,8 @@ export default function FavsPage() {
     const [photos, setPhotos] = useState<string[]>([]);
     const [isLogIn, setIsLogIn] = useState<boolean>(false);
 
-
     useEffect(() => {
         getCurrentUser() ? setIsLogIn(true) : setIsLogIn(false);
-
         const email = getCurrentUser();
         if (email) {
             const values = localStorage.getItem(email);

@@ -1,6 +1,6 @@
 import Form from "@/components/Form/Form";
-import 'bootstrap/dist/css/bootstrap.css';
 import styles from '@/styles/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function AuthPage() {
   return (

@@ -1,12 +1,7 @@
 "use-client";
 import { useState } from "react";
 import styles from "./style.module.css";
-
-const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-const forms = {
-  reg: 'reg',
-  logIn: 'logIn'
-};
+import { EMAIL_REGEXP, forms } from "@/utils/common";
 
 
 export default function Form() {

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { unsplash } from "@/utils/common";
-import 'bootstrap/dist/css/bootstrap.css';
 import styles from "./style.module.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 interface IProps {
   updatePhotos: (updatePhotos: any) => void;
@@ -12,7 +12,6 @@ interface IProps {
 export default function Pagination(props: IProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pages, setPages] = useState<number[]>([1, 2, 3]);
-
 
   useEffect(() => {
     unsplash.photos.list({ page: currentPage, perPage: 30 }).then((result) => {

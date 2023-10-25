@@ -1,11 +1,11 @@
 "use-client";
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import { categories, unsplash } from '@/utils/common';
 import Search from '@/components/Search/Search';
 import Pagination from '@/components/Pagination/Pagination';
+import styles from '@/styles/Home.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 export const getCurrentUser = () => localStorage.getItem('currentUser');
@@ -84,12 +84,10 @@ export default function Main() {
             ? <button type="button" className="btn btn-info" onClick={() => setIsRemoteUser(!isRemoteUser)}>Exit</button>
             : <button type="button" className="btn btn-info"><a href="/auth">Sign in </a></button>
           }
-          {/* <button type="button" className="btn btn-info"><a href="/auth">Sign in </a></button> */}
           <button type="button" className="btn btn-info"><a href="/favs">Favorites </a></button>
         </div>
         <div className={styles.photos}>
           <Search request={searchPhotos} />
-
 
           {
             isLogIn
@@ -100,7 +98,6 @@ export default function Main() {
               </select>
               : <div>Sorting by popularity and creation date is available only to authorized users.</div>
           }
-
 
           <select className="form-select form-select-sm" style={{ margin: '10px 0' }} aria-label=".form-select-sm example" defaultValue="Filter by category" onChange={(e: any) => setQuery(e.target.value)}>
             <option disabled>Filter by category</option>
