@@ -8,20 +8,32 @@ import Search from '@/components/Search/Search';
 import Pagination from '@/components/Pagination/Pagination';
 
 const inter = Inter({ subsets: ['latin'] });
-export const getCurrentUser = () => localStorage.getItem('currentUser') 
+export const getCurrentUser = () => localStorage.getItem('currentUser');
 
 export default function Main() {
   const [photos, setPhotos] = useState<any>([]);
   const [query, setQuery] = useState<string>('');
-  const [isLogIn, setIsLogIn] = useState<boolean>(false);
-
+  const [isLogIn, setIsLogIn] = useState<boolean>();
+  const [isRemoteUser, setIsRemoteUser] = useState<boolean>(false);
 
   useEffect(() => {
     unsplash.photos.list({ perPage: 30 }).then((result) => {
       setPhotos(result.response?.results);
     });
-    getCurrentUser() ? setIsLogIn(!isLogIn) : setIsLogIn(isLogIn);
+    console.log('getCurrentUser()', getCurrentUser());
+
+    getCurrentUser() ? setIsLogIn(true) : setIsLogIn(false);
   }, []);
+
+
+  useEffect(() => {
+    if (isRemoteUser === true) {
+      const currentEmail = getCurrentUser();
+      currentEmail && localStorage.removeItem('currentUser');
+      currentEmail && localStorage.removeItem(currentEmail);
+      setIsLogIn(!isLogIn);
+    }
+  });
 
   useEffect(() => {
     if (query !== '') {
@@ -49,15 +61,17 @@ export default function Main() {
 
   const addPhotoToFavs = (url: string) => {
     const currentEmail = getCurrentUser();
-    if(currentEmail) {
-      const value = localStorage.getItem(currentEmail)
-      if(value) {
+
+    if (currentEmail) {
+      const value = localStorage.getItem(currentEmail);
+      if (value) {
         const newData = JSON.parse(value);
-        newData['favoritePhotos'].push(url)
-        localStorage[currentEmail] = JSON.stringify(newData)
+        newData['favoritePhotos'].push(url);
+        localStorage[currentEmail] = JSON.stringify(newData);
       }
     }
-  }
+  };
+
 
   return (
     <>
@@ -66,7 +80,11 @@ export default function Main() {
       </Head>
       <div className="main-page">
         <div className={styles.header}>
-          <button type="button" className="btn btn-info"><a href="/auth">Sign in </a></button>
+          {isLogIn
+            ? <button type="button" className="btn btn-info" onClick={() => setIsRemoteUser(!isRemoteUser)}>Exit</button>
+            : <button type="button" className="btn btn-info"><a href="/auth">Sign in </a></button>
+          }
+          {/* <button type="button" className="btn btn-info"><a href="/auth">Sign in </a></button> */}
           <button type="button" className="btn btn-info"><a href="/favs">Favorites </a></button>
         </div>
         <div className={styles.photos}>
@@ -95,9 +113,9 @@ export default function Main() {
             ? <div className={styles.photosField}>
               {photos.map(({ urls: { regular } }: any) => (
                 <div key={regular} style={{ position: 'relative' }}>
-                  {isLogIn 
-                  ? <img className={styles.plus} src='plus.svg' alt='plus' onClick={() => addPhotoToFavs(regular)} />
-                  : <div></div>
+                  {isLogIn
+                    ? <img className={styles.plus} src='plus.svg' alt='plus' onClick={() => addPhotoToFavs(regular)} />
+                    : <div></div>
                   }
                   <img src={regular} alt={regular} className={styles.photo} />
                 </div>
