@@ -1,0 +1,28 @@
+.form {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 160px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #0dcaf0;
+}
+
+.red {
+    color: red;
+}
+
+.changeForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.changeForm:hover {
+    color: rgb(128, 13, 13);
+}

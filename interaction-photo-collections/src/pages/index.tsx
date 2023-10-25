@@ -14,7 +14,6 @@ export default function Main() {
       <div className="main-page">
         <div className={styles.header}>
           <button type="button" className="btn btn-info"><a href="/auth">Sign in</a></button>
-          <button type="button" className="btn btn-info"><a href="/auth">Sign out</a></button>
         </div>
         <Photos />
       </div>

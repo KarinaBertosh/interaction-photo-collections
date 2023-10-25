@@ -1,14 +1,14 @@
-import Modal from "@/components/Modal/Modal";
+import Form from "@/components/Form/Form";
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from '@/styles/Home.module.css';
 
 export default function AuthPage() {
   return (
-    <div className="auth-page">
+    <div className={styles.authPage}>
       <div className={styles.header}>
-        <button type="button" className="btn btn-info"><a href="/">Photos</a></button>
+        <button type="button" className="btn btn-info"><a href="/">Go to photo</a></button>
       </div>
-      <Modal /> 
+      <Form /> 
     </div>
   );
 }

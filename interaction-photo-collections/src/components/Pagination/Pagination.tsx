@@ -54,7 +54,7 @@ export default function Pagination(props: IProps) {
         <ul className="pagination ">
           <li className="page-item"><a className="page-link" href="#" onClick={() => handling(false)} >Last</a></li>
           {pages.map((num: number) => (
-            <li key={num} className="page-item"><a className={`${currentPage === num ? "page-link active-page" : 'page-link'}`} href="#" onClick={() => setCurrentPage(num)}>{num}</a></li>
+            <li key={num} className="page-item"><a className={`${currentPage === num ? `page-link ${styles.active}` : 'page-link'}`} href="#" onClick={() => setCurrentPage(num)}>{num}</a></li>
           ))}
           <li className="page-item"><a className="page-link" href="#" onClick={() => handling(true)} >Next</a></li>
         </ul>
