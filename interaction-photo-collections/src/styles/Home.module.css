@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header button {
+  margin: 5px;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+}

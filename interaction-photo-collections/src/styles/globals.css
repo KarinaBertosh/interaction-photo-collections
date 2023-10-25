@@ -1,0 +1,8 @@
+:root {
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

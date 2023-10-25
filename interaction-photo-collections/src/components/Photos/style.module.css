@@ -7,8 +7,10 @@
 }
 
 .photos__photo {
-    width: 300px;
-    height: 100%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin: 0 10px 10px 0;
 }
 
 .form-select {

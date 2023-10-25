@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
-import { categories, unsplash } from "@/utils/common";
 import Search from "../Search/Search";
+import { categories, unsplash } from "@/utils/common";
+import styles from "./style.module.css";
 import 'bootstrap/dist/css/bootstrap.css';
-import "./style.css";
 
 
 export default function Photos() {
@@ -12,7 +12,7 @@ export default function Photos() {
   const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
-    unsplash.photos.list({}).then((result) => {
+    unsplash.photos.list({ perPage: 30 }).then((result) => {
       setPhotos(result.response?.results);
     });
   }, []);
@@ -20,8 +20,9 @@ export default function Photos() {
   useEffect(() => {
     if (query !== '') {
       unsplash.search.getPhotos({
-        query: query
-      }).then((result) => { 
+        query: query,
+        perPage: 30
+      }).then((result) => {
         setPhotos(result?.response?.results);
       });
     }
@@ -42,16 +43,16 @@ export default function Photos() {
 
 
   return (
-    <div className="photos">
+    <div className={styles.photos}>
       <Search request={searchPhotos} />
 
-      <select className="form-select form-select-sm" aria-label=".form-select-sm example" defaultValue="Sort by" onChange={(e: any) => sortPhotos(e.target.value)}>
+      <select className="form-select form-select-sm" style={{marginTop: 10}} aria-label=".form-select-sm example" defaultValue="Sort by" onChange={(e: any) => sortPhotos(e.target.value)}>
         <option disabled>Sort by</option>
         <option value="1">Popular</option>
         <option value="2">Date added</option>
       </select>
 
-      <select className="form-select form-select-sm" aria-label=".form-select-sm example" defaultValue="Filter by category" onChange={(e: any) => setQuery(e.target.value)}>
+      <select className="form-select form-select-sm" style={{margin: '10px 0'}} aria-label=".form-select-sm example" defaultValue="Filter by category" onChange={(e: any) => setQuery(e.target.value)}>
         <option disabled>Filter by category</option>
         {categories.map((category: string) => (
           <option key={category} value={category}>{category}</option>
@@ -65,7 +66,7 @@ export default function Photos() {
               key={regular}
               src={regular}
               alt={regular}
-              className="photos__photo"
+              className={styles.photos__photo}
             />
           ))}
         </div>

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { unsplash } from "@/utils/common";
 import 'bootstrap/dist/css/bootstrap.css';
-import "./style.css";
+import styles from "./style.module.css";
 
 interface IProps {
   updatePhotos: (updatePhotos: any) => void;
@@ -15,7 +15,7 @@ export default function Pagination(props: IProps) {
 
 
   useEffect(() => {
-    unsplash.photos.list({ page: currentPage }).then((result) => {
+    unsplash.photos.list({ page: currentPage, perPage: 30 }).then((result) => {
       props.updatePhotos(result.response?.results);
     });
   }, [currentPage]);
@@ -49,7 +49,7 @@ export default function Pagination(props: IProps) {
 
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
       <nav aria-label="Exam">
         <ul className="pagination ">
           <li className="page-item"><a className="page-link" href="#" onClick={() => handling(false)} >Last</a></li>

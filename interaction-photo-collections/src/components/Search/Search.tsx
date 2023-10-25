@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import "./style.css";
+import "./style.module.css";
 
 interface IProp {
   request: (request: any) => void;
