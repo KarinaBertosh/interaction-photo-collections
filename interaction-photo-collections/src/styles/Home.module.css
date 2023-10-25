@@ -18,6 +18,41 @@
   color: white;
 }
 
-.authPage {
+.photos {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
+.photosField {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  margin: 0 10px 10px 0;
+}
+
+.form-select {
+  margin: 10px;
+}
+
+.plus {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.plus:hover {
+  background-color: rgb(206, 222, 252);
 }

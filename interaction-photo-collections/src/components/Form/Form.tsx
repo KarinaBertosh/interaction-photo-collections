@@ -22,7 +22,7 @@ export default function Form() {
 
     if (currentForm === forms.reg) {
       if (EMAIL_REGEXP.test(email)) {
-        localStorage.setItem(email, JSON.stringify({password: password, isLogin: true}));
+        localStorage.setItem(email, JSON.stringify({password: password, favoritePhotos: [] }));
         localStorage.setItem('currentUser', email);
         setEmail('');
         setPassword('');
