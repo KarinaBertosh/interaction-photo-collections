@@ -10,11 +10,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 export default function Photos() {
   const [photos, setPhotos] = useState<any>([]);
   const [query, setQuery] = useState<string>('');
+  const [isLogIn, setIsLogIn] = useState<boolean>(false);
 
   useEffect(() => {
     unsplash.photos.list({ perPage: 30 }).then((result) => {
       setPhotos(result.response?.results);
     });
+    localStorage.getItem('currentUser') ? setIsLogIn(!isLogIn) : setIsLogIn(isLogIn);
   }, []);
 
   useEffect(() => {
@@ -46,13 +48,20 @@ export default function Photos() {
     <div className={styles.photos}>
       <Search request={searchPhotos} />
 
-      <select className="form-select form-select-sm" style={{marginTop: 10}} aria-label=".form-select-sm example" defaultValue="Sort by" onChange={(e: any) => sortPhotos(e.target.value)}>
-        <option disabled>Sort by</option>
-        <option value="1">Popular</option>
-        <option value="2">Date added</option>
-      </select>
 
-      <select className="form-select form-select-sm" style={{margin: '10px 0'}} aria-label=".form-select-sm example" defaultValue="Filter by category" onChange={(e: any) => setQuery(e.target.value)}>
+      {
+        isLogIn
+          ? <select className="form-select form-select-sm" style={{ marginTop: 10 }} aria-label=".form-select-sm example" defaultValue="Sort by" onChange={(e: any) => sortPhotos(e.target.value)}>
+            <option disabled>Sort by</option>
+            <option value="1">Popular</option>
+            <option value="2">Date added</option>
+          </select>
+          : <div>Sorting by popularity and creation date is available only to authorized users.</div>
+      }
+
+
+
+      <select className="form-select form-select-sm" style={{ margin: '10px 0' }} aria-label=".form-select-sm example" defaultValue="Filter by category" onChange={(e: any) => setQuery(e.target.value)}>
         <option disabled>Filter by category</option>
         {categories.map((category: string) => (
           <option key={category} value={category}>{category}</option>
